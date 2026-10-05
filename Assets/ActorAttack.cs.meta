@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 660a6dee076a1534dbb5beeae87bb2d1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - damageVFX: {fileID: 1324401533965297602, guid: 0d5cbef48e4955f41a4ac45b00b73c18, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
