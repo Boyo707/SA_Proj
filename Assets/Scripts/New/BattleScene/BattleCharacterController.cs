@@ -3,7 +3,7 @@ using UnityEngine;
 public class BattleCharacterController : MonoBehaviour
 {
     [SerializeField] private CharacterData currentCharacter;
-    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterAttack attack;
 
     private Character character;
 
@@ -12,8 +12,10 @@ public class BattleCharacterController : MonoBehaviour
         character = currentCharacter.CreateCharacter();
     }
 
-    public void NormalAttack()
+    public void PerformAttack()
     {
-        
+        //HEY OBSERVER IM STARTING IT ISH
+        attack.enabled = true;
+        attack.ActivateAttack(character);
     }
 }

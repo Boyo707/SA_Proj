@@ -13,6 +13,8 @@ public class BattleWheel : MonoBehaviour
 
     private bool isMoving = false;
 
+    [SerializeField] private BattleCharacterController myChar;
+
     public enum IconType
     {
         NormalAttack,
@@ -22,7 +24,7 @@ public class BattleWheel : MonoBehaviour
     }
 
     [Serializable]
-    public struct IconData
+    private struct IconData
     {
         public IconType type;
         public Transform transform;
@@ -136,6 +138,10 @@ public class BattleWheel : MonoBehaviour
                 {
                     case IconType.NormalAttack:
                         Debug.Log("Normal Attack Selected");
+                        //Normaly, the observer will receive the call. And the information will be send.
+                        //for now I will do direct calls and then convert it into the observer... because i forgot how to.
+                        //HEY OBSERVER IM STARTING IT
+                        myChar.PerformAttack();
                         break;
                     case IconType.DuoAttack:
                         Debug.Log("Duo Attack Selected");

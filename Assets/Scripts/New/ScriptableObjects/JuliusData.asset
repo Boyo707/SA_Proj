@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 130defaaf4a195c4e8c46d1a90c927ea, type: 3}
-  m_Name: CharacterData
+  m_Name: JuliusData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterName: Julius
   baseStats:
@@ -46,3 +46,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   attackData: {fileID: 11400000, guid: 19cf174594cf7c5439123587978bd796, type: 2}
+  defaultAnimation: {fileID: 9100000, guid: 93b6277e03dc6d7419492db4c3df676a, type: 2}

@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45883603561ea74aa7b5d1c32183f61, type: 3}
+  m_Name: NormalAttack
+  m_EditorClassIdentifier: Assembly-CSharp::AttackData
+  attackName: Bat Swing
+  attacktype: 0
+  attackAnimController: {fileID: 9100000, guid: 0b3369c7cc4a0ab45a289278ec36aef0, type: 2}
+  attackDistance: 3
+  damageList:
+  - attackClip: {fileID: 7400000, guid: 00dfb345b5248c44bb1c3fa926bf7be4, type: 2}
+    minDamage: 1
+    maxDamage: 5
+  - attackClip: {fileID: 7400000, guid: 5670affc37df3fe408966873c7456d84, type: 2}
+    minDamage: 1
+    maxDamage: 5
+  - attackClip: {fileID: 7400000, guid: 7aca40b9309d8a4418f59c746e26615f, type: 2}
+    minDamage: 1
+    maxDamage: 5
+  reactionTime: 0.2
+  aproachClip: {fileID: 7400000, guid: a48e3d67faa39c043b98b6704ff2075e, type: 2}
+  aproachTime: 0.7
+  aproachCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.4285715
+      outSlope: 2.4285715
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.075817205
+    - serializedVersion: 3
+      time: 0.6594809
+      value: 0.99745774
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.5166685
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4743809
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  returnClips:
+  - {fileID: 7400000, guid: 103fb39acb7cf9b4fba355a33073fffb, type: 2}
+  - {fileID: 7400000, guid: 3a7daa382dd90a0489b2615780b78119, type: 2}
+  returnTime: 0.7
+  returnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.002380371
+      inSlope: 2.3952987
+      outSlope: 0.3353124
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.045833334
+    - serializedVersion: 3
+      time: 0.0337438
+      value: 0.008934343
+      inSlope: 0.069412544
+      outSlope: 1.7474095
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.03130877
+    - serializedVersion: 3
+      time: 0.5234185
+      value: 0.84263563
+      inSlope: 1.0838553
+      outSlope: 0.10885112
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.3594405
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.021614762
+      outSlope: -0.021614762
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24485719
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEditor.Animations;
+
 [CreateAssetMenu(fileName = "CharacterData", menuName = "Dungeon/CharacterData")]
 public class CharacterData : ScriptableObject
 {
@@ -7,10 +9,11 @@ public class CharacterData : ScriptableObject
     public CharacterStats baseStats;
     public AnimationCurve levelCurve;
     public AttackData attackData;
+    public AnimatorController defaultAnimation;
 
     public Character CreateCharacter()
     {
-        return new Character(characterName, baseStats, levelCurve, attackData);
+        return new Character(this);
     }
 }
 
@@ -48,16 +51,26 @@ public class CharacterStats
 [Serializable]
 public class Character
 {
-    public string name;
-    public CharacterStats stats;
-    public AnimationCurve levelCurve;
-    public AttackData attackData;
+    private string name;
+    public string Name => name;
 
-    public Character(string pName, CharacterStats pStats, AnimationCurve pLevelCurve, AttackData pAttackData)
+    public CharacterStats stats;
+
+    private AnimationCurve levelCurve;
+    public AnimationCurve LevelCurve => levelCurve;
+
+    private AttackData attackData;
+    public AttackData AttackData => attackData;
+
+    private AnimatorController defaultAnimation;
+    public AnimatorController DefaultAnimation => defaultAnimation;
+
+    public Character(CharacterData data)
     {
-        name = pName;
-        stats = pStats;
-        levelCurve = pLevelCurve;
-        attackData = pAttackData;
+        name = data.name;
+        stats = data.baseStats;
+        levelCurve = data.levelCurve;
+        attackData = data.attackData;
+        defaultAnimation = data.defaultAnimation;
     }
 }

@@ -149,7 +149,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: BattleSpritesMale_0
+  - name: bleh
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -666,6 +666,237 @@ ScriptedImporter:
       width: 11
       height: 7
     spriteID: 155ff731147ae084ca4c6480920ed7aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Body5
+    originalName: 
+    pivot: {x: 0.48964632, y: 0.17575368}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 30
+      width: 13
+      height: 22
+    spriteID: db5c13e78047a3f4cb2c66615c8b1f4a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Shoe4
+    originalName: 
+    pivot: {x: 0.4904694, y: 0.8033857}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 69
+      width: 10
+      height: 11
+    spriteID: c46b488dddae8064e9d857ffed70012b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Bat5
+    originalName: 
+    pivot: {x: 0.1791707, y: 0.5000008}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 172
+      y: 30
+      width: 23
+      height: 5
+    spriteID: 0c2920aee3d94c340a0f72d5061e9d0b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Bat6
+    originalName: 
+    pivot: {x: 0.22120012, y: 0.4461647}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 172
+      y: 20
+      width: 14
+      height: 5
+    spriteID: afd7310bd9d92ba4eaf4eca4d4e89b09
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand4
+    originalName: 
+    pivot: {x: 0.39155197, y: 0.08686659}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 147
+      y: 144
+      width: 8
+      height: 9
+    spriteID: a17216bc06d55ac4d9b10857f9333f16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand5
+    originalName: 
+    pivot: {x: 0.65049964, y: 0.8983808}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 147
+      y: 154
+      width: 7
+      height: 7
+    spriteID: 262cb9db554dcce4496d618259281238
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand6
+    originalName: 
+    pivot: {x: 0.46557277, y: 0.06001129}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 146
+      y: 162
+      width: 9
+      height: 10
+    spriteID: dd4266d147634364a8de73ed582cda13
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand7
+    originalName: 
+    pivot: {x: 0.81369865, y: 0.083682254}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 146
+      y: 173
+      width: 9
+      height: 10
+    spriteID: 68aeae2dd48b9f943b81a0cb575137e7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand8
+    originalName: 
+    pivot: {x: 0.3760605, y: 0.052437678}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 147
+      y: 183
+      width: 8
+      height: 9
+    spriteID: bf98c7c259a7a094ebbee9098c8b86a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Hand9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 183
+      width: 10
+      height: 7
+    spriteID: 234c34e6086846542bc548351f9a0812
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: BatSpin
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 5
+      width: 32
+      height: 30
+    spriteID: 396d024369709f04d95bd6b29fa9731c
     spriteBone: []
     spriteOutline: []
     vertices: []
