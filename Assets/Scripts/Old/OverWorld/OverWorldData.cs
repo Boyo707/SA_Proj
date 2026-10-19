@@ -11,7 +11,7 @@ public class OverWorldData : ScriptableObject
 [Serializable]
 public class RoomData
 {
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<EnemyOld> enemies = new List<EnemyOld>();
 
     public List<GameObject> chests = new List<GameObject>();
     public List<GameObject> Chests => chests;

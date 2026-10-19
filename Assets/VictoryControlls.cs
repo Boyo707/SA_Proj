@@ -9,7 +9,7 @@ public class VictoryControlls : OldBattleObserver
     [SerializeField] private TMP_Text[] characterRewards = new TMP_Text[2];
     [SerializeField] private GameObject[] LevelUpText = new GameObject[2];
 
-    private Enemy enemyData;
+    private EnemyOld enemyData;
     private CharacterOld[] characterData = new CharacterOld[2];
 
     protected override void GetEnemyDeath(CharacterOld pCharData, int damage)

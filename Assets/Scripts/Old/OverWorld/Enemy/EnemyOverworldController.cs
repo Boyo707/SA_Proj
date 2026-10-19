@@ -4,10 +4,10 @@ public class EnemyOverworldController : MonoBehaviour
 {
     [SerializeField] private GameObject visuals;
     [SerializeField] private GameObject functionality;
-    [SerializeField]private Enemy enemy;
+    [SerializeField]private EnemyOld enemy;
 
     public Vector2 roomKey;
-    public Enemy Enemy => enemy;
+    public EnemyOld Enemy => enemy;
 
     public void Start()
     {
@@ -20,7 +20,7 @@ public class EnemyOverworldController : MonoBehaviour
         functionality.SetActive(enemy.isVisible);
     }
 
-    public void InstantiateEnemy(Enemy pEnemy)
+    public void InstantiateEnemy(EnemyOld pEnemy)
     {
         enemy = pEnemy;
     }

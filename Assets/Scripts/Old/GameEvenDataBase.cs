@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyDieEventData : EventData
 {
-    public Enemy enemy;
+    public EnemyOld enemy;
     public GameObject enemyObject;
-    public EnemyDieEventData(Enemy pEnemy, GameObject pEnemyObject)
+    public EnemyDieEventData(EnemyOld pEnemy, GameObject pEnemyObject)
     {
         name = "EnemyDieEvent";
         enemy = pEnemy;

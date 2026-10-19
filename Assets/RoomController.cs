@@ -51,7 +51,7 @@ public class RoomController : MonoBehaviour
 
     public RoomData GetRoomData()
     {
-        List<Enemy> enemies = new List<Enemy>();
+        List<EnemyOld> enemies = new List<EnemyOld>();
         //Debug.Log(gameObject.name + ": " + roomEnemies.Count);
         for (int i = 0; i < roomEnemies.Count; i++)
         {

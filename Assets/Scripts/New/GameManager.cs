@@ -5,9 +5,18 @@ public class GameManager : MonoBehaviour
     public Vector3 playerPosition;
     public Vector3 companionPosition;
 
-    public Character[] charactersData = new Character[2];
+    [SerializeField] private CharacterData maleCharacter;
+    [SerializeField] private CharacterData femaleCharacter;
 
-    public static GameManager Instance;
+    [HideInInspector] public Character maleData;
+    [HideInInspector] public Character femaleData;
+
+    public EnemyData battleEnemyblep;
+    public Enemy battleEnemyData;
+
+
+
+    public static GameManager Instance; 
 
     void Awake()
     {
@@ -19,6 +28,11 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+        maleData = maleCharacter.CreateCharacter();
+        femaleData = femaleCharacter.CreateCharacter();
+
+        battleEnemyData = battleEnemyblep.CreateEnemy();
     }
 }

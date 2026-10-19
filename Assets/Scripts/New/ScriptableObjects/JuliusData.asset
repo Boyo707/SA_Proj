@@ -45,5 +45,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  attackData: {fileID: 11400000, guid: 19cf174594cf7c5439123587978bd796, type: 2}
+  normalAttack: {fileID: 11400000, guid: 19cf174594cf7c5439123587978bd796, type: 2}
+  duoAttack: {fileID: 0}
   defaultAnimation: {fileID: 9100000, guid: 93b6277e03dc6d7419492db4c3df676a, type: 2}

@@ -13,8 +13,8 @@ public class EnemyActor :  OldBattleObserver
     //Idle = 0
     //Attack = 1
 
-    private Enemy enemyData;
-    public Enemy EnemyData => enemyData;
+    private EnemyOld enemyData;
+    public EnemyOld EnemyData => enemyData;
 
     private void Start()
     {

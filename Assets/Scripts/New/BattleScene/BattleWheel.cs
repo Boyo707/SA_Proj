@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class BattleWheel : MonoBehaviour
 {
-    [SerializeField] private IconData[] icons;
+    [SerializeField] private ActionData[] actions;
     [SerializeField] private Transform[] wheelPositions = new Transform[4];
     [SerializeField] private float spinTime;
 
-    [SerializeField] private CharacterData currentCharacter;
-    private Character bleh;
+    [SerializeField] private float wheelHeight = 0.5f;
 
     private bool isMoving = false;
 
-    [SerializeField] private BattleCharacterController myChar;
 
+    private Character currentCharacter;
     public enum IconType
     {
         NormalAttack,
@@ -24,7 +23,7 @@ public class BattleWheel : MonoBehaviour
     }
 
     [Serializable]
-    private struct IconData
+    private struct ActionData
     {
         public IconType type;
         public Transform transform;
@@ -34,11 +33,21 @@ public class BattleWheel : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < icons.Length; i++)
+        for (int i = 0; i < actions.Length; i++)
         {
-            icons[i].posIndex = i;
-            icons[i].transform.position = wheelPositions[i].position;
+            actions[i].posIndex = i;
+            actions[i].transform.position = wheelPositions[i].position;
         }
+    }
+
+    private void OnEnable()
+    {
+        BattleObserver.onTurnStart += InstantiateWheel;
+    }
+
+    private void OnDisable()
+    {
+        BattleObserver.onTurnStart -= InstantiateWheel;
     }
 
     // Update is called once per frame
@@ -67,7 +76,7 @@ public class BattleWheel : MonoBehaviour
 
         for (int i = 0; i < startingPos.Length; i++)
         {
-            startingPos[i] = icons[i].transform.position;
+            startingPos[i] = actions[i].transform.position;
         }
 
         do
@@ -77,7 +86,7 @@ public class BattleWheel : MonoBehaviour
 
             for (int i = 0; i < wheelPositions.Length; i++)
             {
-                int currentIndex = icons[i].posIndex;
+                int currentIndex = actions[i].posIndex;
                 int nextIndex = 0;
                 if (isRight)
                 {
@@ -95,7 +104,7 @@ public class BattleWheel : MonoBehaviour
                         nextIndex = 3;
                     }
                 }
-                    icons[i].transform.position = Vector3.Lerp(startingPos[i], wheelPositions[nextIndex].position, percentage);
+                    actions[i].transform.position = Vector3.Lerp(startingPos[i], wheelPositions[nextIndex].position, percentage);
             }
             yield return null;
         }
@@ -103,10 +112,10 @@ public class BattleWheel : MonoBehaviour
 
         for (int i = 0; i < wheelPositions.Length; i++)
         {
-            int nextIndex = icons[i].posIndex + 1;
+            int nextIndex = actions[i].posIndex + 1;
             if (isRight)
             {
-                nextIndex = icons[i].posIndex + 1;
+                nextIndex = actions[i].posIndex + 1;
                 if (nextIndex > 3)
                 {
                     nextIndex = 0;
@@ -114,15 +123,15 @@ public class BattleWheel : MonoBehaviour
             }
             else
             {
-                nextIndex = icons[i].posIndex - 1;
+                nextIndex = actions[i].posIndex - 1;
                 if (nextIndex < 0)
                 {
                     nextIndex = 3;
                 }
             }
 
-            icons[i].transform.position = wheelPositions[nextIndex].position;
-            icons[i].posIndex = nextIndex;
+            actions[i].transform.position = wheelPositions[nextIndex].position;
+            actions[i].posIndex = nextIndex;
         }
 
         isMoving = false;
@@ -130,32 +139,70 @@ public class BattleWheel : MonoBehaviour
 
     private void SelectAction()
     {
-        for (int i = 0; i < icons.Length; i++) 
+        for (int i = 0; i < actions.Length; i++) 
         {
-            if (icons[i].posIndex == 0)
+            //if this is the first pos
+            if (actions[i].posIndex == 0)
             {
-                switch (icons[i].type)
+                //get action type
+                switch (actions[i].type)
                 {
                     case IconType.NormalAttack:
                         Debug.Log("Normal Attack Selected");
-                        //Normaly, the observer will receive the call. And the information will be send.
-                        //for now I will do direct calls and then convert it into the observer... because i forgot how to.
-                        //HEY OBSERVER IM STARTING IT
-                        myChar.PerformAttack();
+
+                        BattleObserver.onAttack?.Invoke(currentCharacter, currentCharacter.GetNormalAttack());
+                        DisableWheel();
                         break;
                     case IconType.DuoAttack:
                         Debug.Log("Duo Attack Selected");
+
+
+                        DisableWheel();
                         break;
                     case IconType.Bag:
                         Debug.Log("Bag Selected");
                         break;
                     case IconType.Run:
                         Debug.Log("Run Selected");
+
+                        DisableWheel();
                         break;
                 }
             }
         }
     }
 
-    
+    private void DisableWheel()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    public void InstantiateWheel(Actor data, Transform characterTrans)
+    {
+        if (data is Character characterData)
+        {
+            currentCharacter = characterData;
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+
+            transform.position = characterTrans.position + Vector3.up * wheelHeight;
+
+            ResetWheel();
+        }
+    }
+
+    private void ResetWheel()
+    {
+        for (int i = 0; i < actions.Length; i++)
+        {
+            actions[i].transform.position = wheelPositions[i].position;
+            actions[i].posIndex = i;
+        }
+    }
 }

@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 using UnityEditor.Animations;
 
-[CreateAssetMenu(fileName = "CharacterData", menuName = "Dungeon/CharacterData")]
-public class CharacterData : ScriptableObject
+[CreateAssetMenu(fileName = "CharacterData", menuName = "Dungeon/Actor/Character")]
+public class CharacterData : ActorData
 {
-    public string characterName;
-    public CharacterStats baseStats;
+    public CharacterStats characterStats;
     public AnimationCurve levelCurve;
-    public AttackData attackData;
+    public AttackData normalAttack;
+    public AttackData duoAttack;
     public AnimatorController defaultAnimation;
 
     public Character CreateCharacter()
@@ -20,19 +20,13 @@ public class CharacterData : ScriptableObject
 [Serializable]
 public class CharacterStats
 {
-    public int maxHealth;
-    public int currentHP;
-    public int damage;
     public int maxSpecial;
     public int currentSpecial;
     public int experiencePoints;
     public int level = 1;
 
-    public CharacterStats(int pMaxHealth, int pCurrentHp, int pDamage, int pMaxSpecial, int pCurrentSpecial, int pXP, int pLevel)
+    public CharacterStats(int pMaxSpecial, int pCurrentSpecial, int pXP, int pLevel)
     {
-        maxHealth = pMaxHealth;
-        currentHP = pCurrentHp;
-        damage = pDamage;
         maxSpecial = pMaxSpecial;
         currentSpecial = pCurrentSpecial;
         experiencePoints = pXP;
@@ -41,26 +35,24 @@ public class CharacterStats
 
     public CharacterStats Clone()
     {
-        CharacterStats other = new CharacterStats(maxHealth, currentHP, damage,
-            maxSpecial, currentSpecial, experiencePoints, level);
+        CharacterStats other = new CharacterStats(maxSpecial, currentSpecial, experiencePoints, level);
 
         return other;
     }
 }
 
 [Serializable]
-public class Character
+public class Character: Actor
 {
-    private string name;
-    public string Name => name;
-
-    public CharacterStats stats;
+    public CharacterStats characterStats;
 
     private AnimationCurve levelCurve;
     public AnimationCurve LevelCurve => levelCurve;
 
-    private AttackData attackData;
-    public AttackData AttackData => attackData;
+    private AttackData normalAttack;
+    public AttackData NormalAttack => normalAttack;
+    private AttackData duoAttack;
+    public AttackData DuoAttack => duoAttack;
 
     private AnimatorController defaultAnimation;
     public AnimatorController DefaultAnimation => defaultAnimation;
@@ -68,9 +60,21 @@ public class Character
     public Character(CharacterData data)
     {
         name = data.name;
-        stats = data.baseStats;
+        baseStats = data.baseStats;
+        characterStats = data.characterStats;
         levelCurve = data.levelCurve;
-        attackData = data.attackData;
+        normalAttack = data.normalAttack;
+        duoAttack = data.duoAttack;
         defaultAnimation = data.defaultAnimation;
+    }
+
+    public Attack GetNormalAttack()
+    {
+        return normalAttack.GetAttack();
+    }
+
+    public Attack GetDuoAttack()
+    {
+        return duoAttack.GetAttack();
     }
 }

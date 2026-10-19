@@ -7,7 +7,7 @@ public class ActorAttack : MonoBehaviour
     private CharacterOld characterData;
     private Animator playerAnimator;
 
-    private Enemy enemyData;
+    private EnemyOld enemyData;
     private Animator enemyAnimator;
 
     private string clipName;

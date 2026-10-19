@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class CharacterAttack : MonoBehaviour
 {
@@ -28,10 +26,10 @@ public class CharacterAttack : MonoBehaviour
         this.enabled = false;
     }
 
-    public void ActivateAttack(Character data)
+    public void ActivateAttack(Character data, Attack attackData)
     {
         characterData = data; 
-        currentAttack = data.AttackData.GetAttack();
+        currentAttack = attackData;
         animator.runtimeAnimatorController = currentAttack.AnimationController;
 
         startPosition = transform.position;
@@ -140,10 +138,8 @@ public class CharacterAttack : MonoBehaviour
 
     public void EndAttack()
     {
-        //HEY OBSERVER IM ENDING IT
         isEnding = false;
-        animator.runtimeAnimatorController = characterData.DefaultAnimation;
-        this.enabled = false;
+        BattleObserver.onTurnEnd?.Invoke();
     }
     
 }

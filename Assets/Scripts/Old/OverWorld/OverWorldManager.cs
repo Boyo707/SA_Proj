@@ -65,7 +65,7 @@ public class OverWorldManager : MonoBehaviour
         tempRooms.Clear();
         tempRooms = GameObject.FindGameObjectsWithTag("Room").ToList<GameObject>();
 
-        EnemySpawner spawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
+        //EnemySpawner spawner = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemySpawner>();
         for (int i = 0; i < tempRooms.Count; i++)
         {
             if (tempRooms[i].TryGetComponent<RoomController>(out RoomController room))
@@ -80,7 +80,7 @@ public class OverWorldManager : MonoBehaviour
                 }
             }
         }
-        spawner.SpawnPreviousEnemies();
+        //spawner.SpawnPreviousEnemies();
     }
 
     private void AddRoom(RoomController room)

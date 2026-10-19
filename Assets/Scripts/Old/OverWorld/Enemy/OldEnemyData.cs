@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.U2D.Animation;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "Scriptable Objects/EnemyData")]
-public class EnemyData : ScriptableObject
+public class OldEnemyData : ScriptableObject
 {
     public string enemyName;
 
@@ -22,14 +22,14 @@ public class EnemyData : ScriptableObject
     public SpriteLibraryAsset overworldSprites;
     public SpriteLibraryAsset battleSprites;
 
-    public Enemy CreateEnemy()
+    public EnemyOld CreateEnemy()
     {
-        return new Enemy(enemyName, XP, money, damage, maxHP, spawnChance, animatorController, overworldSprites, battleSprites);
+        return new EnemyOld(enemyName, XP, money, damage, maxHP, spawnChance, animatorController, overworldSprites, battleSprites);
     }
 }
 
 [Serializable]
-public class Enemy
+public class EnemyOld
 {
     public string Name => name;
     private string name;
@@ -58,7 +58,7 @@ public class Enemy
     public SpriteLibraryAsset BattleSprites => battleSprites;
     private SpriteLibraryAsset battleSprites;
 
-    public Enemy(string pName, int pXP, int pMoney, int pDamage, int pMaxHP, int pSpawnChance,
+    public EnemyOld(string pName, int pXP, int pMoney, int pDamage, int pMaxHP, int pSpawnChance,
         AnimatorController pAnimatorController, SpriteLibraryAsset pOverworldSprite, SpriteLibraryAsset pBattleSprites)
     {
         name = pName;
@@ -73,9 +73,9 @@ public class Enemy
         battleSprites = pBattleSprites;
     }
 
-    public Enemy Clone()
+    public EnemyOld Clone()
     {
-        Enemy other = new Enemy(name, xp, money, damage, maxHP, 
+        EnemyOld other = new EnemyOld(name, xp, money, damage, maxHP, 
             spawnChance, animatorController, overworldSprites, battleSprites); 
 
         return other;

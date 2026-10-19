@@ -15,7 +15,7 @@ public class GameManagerOld : MonoBehaviour
     [SerializeField] private CharacterDataOld[] data = new CharacterDataOld[2];
     [HideInInspector]public CharacterOld[] characterDatas = new CharacterOld[2];
     
-    [HideInInspector] public Enemy currentEnemy;
+    [HideInInspector] public EnemyOld currentEnemy;
 
 
     public event Action onLoadingOverworld;
