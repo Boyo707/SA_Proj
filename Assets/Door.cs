@@ -1,7 +1,7 @@
 using PP.InventorySystem;
 using UnityEngine;
 
-public class Door : MonoBehaviour, IInteractable
+public class Door : MonoBehaviour
 {
     [SerializeField] private Item requiredItem;
     [SerializeField] private RoomController doorToRoom;

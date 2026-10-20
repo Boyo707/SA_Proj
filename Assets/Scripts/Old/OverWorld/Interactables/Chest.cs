@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace PP.Interactables
 {
-    public class Chest : MonoBehaviour, IInteractable
+    public class Chest : MonoBehaviour
     {
         public static Action<Item> onGetItem;
 

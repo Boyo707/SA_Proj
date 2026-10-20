@@ -8,7 +8,7 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField] private GameObject itemPanel;
     [SerializeField] private Transform itemLayoutGroup;
 
-    [SerializeField] private ActionWheel actionWheel;
+    //[SerializeField] private ActionWheel actionWheel;
 
     [SerializeField] private int itemIndex = 0;
 
@@ -82,7 +82,7 @@ public class InventoryDisplay : MonoBehaviour
     {
         itemLayoutGroup.gameObject.SetActive(false);
         canBeUsed = false;
-        actionWheel.ToggleActions(true);
+        //actionWheel.ToggleActions(true);
     }
 
     private void ChangeSelection(int add)

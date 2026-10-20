@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,5 +53,9 @@ public class TurnBasedController : MonoBehaviour
         order.Enqueue(currentActor);
     }
 
+    public void OnWin()
+    {
+
+    }
     
 }

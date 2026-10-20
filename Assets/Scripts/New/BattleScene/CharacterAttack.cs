@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class CharacterAttack : MonoBehaviour
 {
-    private Character characterData;
+    [SerializeField] CharacterData currentCharacter;
+    private Character character;
+
     private Attack currentAttack;
     
     [SerializeField] private Animator animator;
@@ -19,29 +21,45 @@ public class CharacterAttack : MonoBehaviour
     private bool isLerping = false;
 
     private bool isEnding = false;
+    private bool isAttacking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        this.enabled = false;
+        character = currentCharacter.CreateCharacter();
     }
 
-    public void ActivateAttack(Character data, Attack attackData)
+    private void OnEnable()
     {
-        characterData = data; 
-        currentAttack = attackData;
-        animator.runtimeAnimatorController = currentAttack.AnimationController;
-
-        startPosition = transform.position;
-        attackPosition = enemy.position + Vector3.left * currentAttack.AttackDistance;
-
-        currentClip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
-        previousClip = currentClip;
+        BattleObserver.onAttack += ActivateAttack;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
+        BattleObserver.onAttack -= ActivateAttack;
+    }
+
+    public void ActivateAttack(Actor data, Attack attackData)
+    {
+        if (data.Name == character.Name)
+        {
+            currentAttack = attackData;
+            animator.runtimeAnimatorController = currentAttack.AnimationController;
+
+            startPosition = transform.position;
+            attackPosition = enemy.position + Vector3.left * currentAttack.AttackDistance;
+
+            currentClip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
+            previousClip = currentClip;
+
+            isAttacking = true;
+        }
+    }
+
+    private void Update()
+    {
+        if (!isAttacking) return;
+
         currentClip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
 
         if (isEnding)
@@ -57,7 +75,9 @@ public class CharacterAttack : MonoBehaviour
 
         AttackCheck();
 
-        previousClip = currentClip;    
+        FailCheck();
+
+        previousClip = currentClip;
     }
 
     private void LerpCheck()
@@ -82,38 +102,6 @@ public class CharacterAttack : MonoBehaviour
         }
     }
 
-    private void AttackCheck()
-    {
-        //Input Check
-        if (Input.GetMouseButtonDown(0) && currentAttack.HasAttack(previousClip))
-        {
-            float currentClipTime = Mathf.Lerp(0, currentClip.length, animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
-
-            float hitTime = currentClip.length - currentClipTime;
-            if (hitTime > currentAttack.ReactionTime)
-            {
-                animator.SetTrigger("Fail");
-            }
-            else if (hitTime < currentAttack.ReactionTime)
-            {
-                hasAttacked = true;
-            }
-        }
-
-        //Fail Check
-        if (currentClip != previousClip && currentAttack.HasAttack(previousClip))
-        {
-            if (hasAttacked == false)
-            {
-                animator.SetTrigger("Fail");
-            }
-            else
-            {
-                hasAttacked = false;
-            }
-        }
-    }
-
     public IEnumerator LerpMove(Vector3 startPos, Vector3 endPos, bool isReturning)
     {
         isLerping = true;
@@ -131,6 +119,52 @@ public class CharacterAttack : MonoBehaviour
             isEnding = true;
         }
     }
+
+    private void AttackCheck()
+    {
+        //Input Check
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Check Click");
+            if (currentAttack.HasAttack(previousClip))
+            {
+                Debug.Log("Is clip");
+                float currentClipTime = Mathf.Lerp(0, currentClip.length, animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
+                float hitTime = currentClip.length - currentClipTime;
+                if (hitTime > currentAttack.ReactionTime)
+                {
+                    animator.SetTrigger("Fail");
+                }
+                else if (hitTime < currentAttack.ReactionTime)
+                {
+                    hasAttacked = true;
+                }
+            }
+        }
+    }
+
+    private void FailCheck()
+    {
+        //Fail Check
+        if (currentClip != previousClip && currentAttack.HasAttack(previousClip))
+        {
+            if (hasAttacked == false)
+            {
+                Debug.Log(currentClip.name);
+                Debug.Log(previousClip.name);
+                Debug.Log("Failed");
+                animator.SetTrigger("Fail");
+            }
+            else
+            {
+                Debug.Log("ClickFail");
+                hasAttacked = false;
+            }
+        }
+    }
+
+    
     public bool AnimationHasReachedEnd()
     {
         return Mathf.Lerp(0, currentClip.length, animator.GetCurrentAnimatorStateInfo(0).normalizedTime) == currentClip.length;
@@ -138,6 +172,7 @@ public class CharacterAttack : MonoBehaviour
 
     public void EndAttack()
     {
+        isAttacking = false;
         isEnding = false;
         BattleObserver.onTurnEnd?.Invoke();
     }

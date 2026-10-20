@@ -18,7 +18,7 @@ public class PlayerActor : OldBattleObserver
 
     [SerializeField] private GameObject sparkObject;
 
-    private ActionWheel actionWheel;
+    //private ActionWheel actionWheel;
 
     private CharacterOld characterData;
     public CharacterOld CharacterData => characterData;
@@ -34,22 +34,22 @@ public class PlayerActor : OldBattleObserver
             characterData = GameManagerOld.Instance.characterDatas[1];
         }
 
-        actionWheel = selectionWheel.GetComponent<ActionWheel>();
+        //actionWheel = selectionWheel.GetComponent<ActionWheel>();
     }
 
     public override void StartTurn()
     {
         animator.runtimeAnimatorController = animations[0];
 
-        actionWheel.currentActor = this;
+        //actionWheel.currentActor = this;
         selectionWheel.transform.position = wheelPosTransform.position;
-        actionWheel.ToggleActions(true);
+        //actionWheel.ToggleActions(true);
     }
 
     public override void EndTurn()
     {
         animator.runtimeAnimatorController = animations[0];
-        actionWheel.ResetPosition();
+        //actionWheel.ResetPosition();
         OldBattleController.Instance.NextTurn();
     }
 
@@ -91,7 +91,7 @@ public class PlayerActor : OldBattleObserver
     
     public void Attack()
     {
-        actionWheel.ResetPosition();
+        //actionWheel.ResetPosition();
         animator.runtimeAnimatorController = animations[1];
         gameObject.AddComponent<ActorAttack>().InitializeAttack(sparkObject, characterData, animator);
     }

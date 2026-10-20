@@ -156,7 +156,7 @@ public class BattleWheel : MonoBehaviour
                     case IconType.DuoAttack:
                         Debug.Log("Duo Attack Selected");
 
-
+                        BattleObserver.onAttack?.Invoke(currentCharacter, currentCharacter.GetDuoAttack());
                         DisableWheel();
                         break;
                     case IconType.Bag:
