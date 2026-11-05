@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ActorAttack : MonoBehaviour
+public class OldActorAttack : MonoBehaviour
 {
     private GameObject sparkObject;
 

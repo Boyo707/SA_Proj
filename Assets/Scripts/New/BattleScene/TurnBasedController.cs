@@ -38,19 +38,17 @@ public class TurnBasedController : MonoBehaviour
 
     private void OnEnable()
     {
-        BattleObserver.onTurnEnd += NextCharacter;
+        //BattleManager.onTurnEnd += NextCharacter;
     }
 
     private void OnDisable()
     {
-        BattleObserver.onTurnEnd -= NextCharacter;
+         //BattleManager.onTurnEnd -= NextCharacter;
     }
 
     public void NextCharacter()
     {
-        currentActor = order.Dequeue();
-        BattleObserver.onTurnStart?.Invoke(currentActor.actor, currentActor.transform);
-        order.Enqueue(currentActor);
+        
     }
 
     public void OnWin()

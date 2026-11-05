@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BattleWheel : MonoBehaviour
+public class ActionWheel : MonoBehaviour
 {
     [SerializeField] private ActionData[] actions;
     [SerializeField] private Transform[] wheelPositions = new Transform[4];
@@ -11,6 +11,7 @@ public class BattleWheel : MonoBehaviour
     [SerializeField] private float wheelHeight = 0.5f;
 
     private bool isMoving = false;
+    private bool isActivated = false;
 
 
     private Character currentCharacter;
@@ -53,6 +54,9 @@ public class BattleWheel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isActivated)
+            return;
+
         if (Input.GetKeyDown(KeyCode.D) && !isMoving)
         {
             StartCoroutine(MoveIcons(true));
@@ -64,6 +68,7 @@ public class BattleWheel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             SelectAction();
+            isActivated = false;
         }
     }
 
@@ -150,13 +155,12 @@ public class BattleWheel : MonoBehaviour
                     case IconType.NormalAttack:
                         Debug.Log("Normal Attack Selected");
 
-                        BattleObserver.onAttack?.Invoke(currentCharacter, currentCharacter.GetNormalAttack());
+                        BattleManager.Instance.Attack(currentCharacter.GetNormalAttack());
                         DisableWheel();
                         break;
                     case IconType.DuoAttack:
                         Debug.Log("Duo Attack Selected");
-
-                        BattleObserver.onAttack?.Invoke(currentCharacter, currentCharacter.GetDuoAttack());
+                        BattleManager.Instance.Attack(currentCharacter.GetDuoAttack());
                         DisableWheel();
                         break;
                     case IconType.Bag:
@@ -180,10 +184,12 @@ public class BattleWheel : MonoBehaviour
         }
     }
 
-    public void InstantiateWheel(Actor data, Transform characterTrans)
+    public void InstantiateWheel(Actor data)
     {
         if (data is Character characterData)
         {
+            isActivated = true;
+
             currentCharacter = characterData;
 
             for (int i = 0; i < transform.childCount; i++)
@@ -191,7 +197,7 @@ public class BattleWheel : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(true);
             }
 
-            transform.position = characterTrans.position + Vector3.up * wheelHeight;
+            transform.position = currentCharacter.transform.position + Vector3.up * wheelHeight;
 
             ResetWheel();
         }

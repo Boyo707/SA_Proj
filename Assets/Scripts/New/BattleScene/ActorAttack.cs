@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
+[RequireComponent(typeof(ActorIdentity))]
+[RequireComponent(typeof(Animator))]
 
-public class CharacterAttack : MonoBehaviour
+public class ActorAttack : MonoBehaviour
 {
-    [SerializeField] CharacterData currentCharacter;
-    private Character character;
-
     private Attack currentAttack;
-    
-    [SerializeField] private Animator animator;
-    [SerializeField] private Transform enemy;
-    
+
+    private Actor attackingActor;
+    private Actor targetActor;
+
+    private Animator animator;
+        
     private Vector3 attackPosition;
     private Vector3 startPosition;
 
@@ -23,10 +24,12 @@ public class CharacterAttack : MonoBehaviour
     private bool isEnding = false;
     private bool isAttacking = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private Actor actor;
+    private void Start()
     {
-        character = currentCharacter.CreateCharacter();
+        actor = GetComponent<ActorIdentity>().MyActor;
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -39,15 +42,18 @@ public class CharacterAttack : MonoBehaviour
         BattleObserver.onAttack -= ActivateAttack;
     }
 
-    public void ActivateAttack(Actor data, Attack attackData)
+    public void ActivateAttack(Actor actorData, Attack attackData, Actor enemyData)
     {
-        if (data.Name == character.Name)
+        if (actor == actorData)
         {
+            attackingActor = actorData;
             currentAttack = attackData;
+            targetActor = enemyData;
+
             animator.runtimeAnimatorController = currentAttack.AnimationController;
 
-            startPosition = transform.position;
-            attackPosition = enemy.position + Vector3.left * currentAttack.AttackDistance;
+            startPosition = attackingActor.transform.position;
+            attackPosition = targetActor.transform.position + Vector3.left * currentAttack.AttackDistance;
 
             currentClip = animator.GetCurrentAnimatorClipInfo(0)[0].clip;
             previousClip = currentClip;
@@ -110,7 +116,7 @@ public class CharacterAttack : MonoBehaviour
         while (lerpTime <= 1)
         {
             lerpTime = elapsedTime / currentAttack.AproachTime;
-            transform.position = Vector3.Lerp(startPos, endPos, currentAttack.AproachCurve.Evaluate(lerpTime));
+            attackingActor.transform.position = Vector3.Lerp(startPos, endPos, currentAttack.AproachCurve.Evaluate(lerpTime));
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
@@ -139,6 +145,8 @@ public class CharacterAttack : MonoBehaviour
                 else if (hitTime < currentAttack.ReactionTime)
                 {
                     hasAttacked = true;
+                    animator.SetTrigger("Hit");
+                    BattleManager.Instance.DamageActor(targetActor, attackingActor.baseStats.damage);
                 }
             }
         }
@@ -174,7 +182,7 @@ public class CharacterAttack : MonoBehaviour
     {
         isAttacking = false;
         isEnding = false;
-        BattleObserver.onTurnEnd?.Invoke();
+        BattleManager.Instance.EndTurn();
     }
     
 }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static TurnBasedController;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,14 +9,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CharacterData maleCharacter;
     [SerializeField] private CharacterData femaleCharacter;
+    [SerializeField] private EnemyData battleEnemyblep;
 
-    [HideInInspector] public Character maleData;
-    [HideInInspector] public Character femaleData;
+    public Character maleData;
+    public Character femaleData;
 
-    public EnemyData battleEnemyblep;
     public Enemy battleEnemyData;
-
-
 
     public static GameManager Instance; 
 
@@ -32,7 +32,15 @@ public class GameManager : MonoBehaviour
         }
         maleData = maleCharacter.CreateCharacter();
         femaleData = femaleCharacter.CreateCharacter();
-
         battleEnemyData = battleEnemyblep.CreateEnemy();
+
+    }
+
+    //eventually the void for starting the battle
+    private void Start()
+    {
+        //activate camera
+        //disable player controlls and enemy
+        BattleManager.Instance.InitializeBattle(maleData, femaleData, battleEnemyData);
     }
 }

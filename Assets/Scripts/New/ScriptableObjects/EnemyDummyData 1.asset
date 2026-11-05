@@ -17,5 +17,6 @@ MonoBehaviour:
     maxHealth: 9999
     currentHP: 9999
     damage: 1
+  defaultBattleAnimation: {fileID: 0}
   moneyDropAmount: 10
   xpDropAmount: 6

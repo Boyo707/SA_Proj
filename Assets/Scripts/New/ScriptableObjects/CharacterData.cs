@@ -9,7 +9,6 @@ public class CharacterData : ActorData
     public AnimationCurve levelCurve;
     public AttackData normalAttack;
     public AttackData duoAttack;
-    public AnimatorController defaultAnimation;
 
     public Character CreateCharacter()
     {
@@ -54,18 +53,17 @@ public class Character: Actor
     private AttackData duoAttack;
     public AttackData DuoAttack => duoAttack;
 
-    private AnimatorController defaultAnimation;
-    public AnimatorController DefaultAnimation => defaultAnimation;
+   
 
     public Character(CharacterData data)
     {
         name = data.name;
-        baseStats = data.baseStats;
-        characterStats = data.characterStats;
+        baseStats = data.baseStats.Clone();
+        characterStats = data.characterStats.Clone();
         levelCurve = data.levelCurve;
         normalAttack = data.normalAttack;
         duoAttack = data.duoAttack;
-        defaultAnimation = data.defaultAnimation;
+        defaultBattleAnimation = data.defaultBattleAnimation;
     }
 
     public Attack GetNormalAttack()
@@ -76,5 +74,15 @@ public class Character: Actor
     public Attack GetDuoAttack()
     {
         return duoAttack.GetAttack();
+    }
+
+    public void DepleteSpecial(int special)
+    {
+        characterStats.currentSpecial = Mathf.Clamp(characterStats.currentSpecial - special, 0, characterStats.maxSpecial);
+    }
+
+    public void IncreaseSpecial(int special)
+    {
+        characterStats.currentSpecial = Mathf.Clamp(characterStats.currentSpecial + special, 0, characterStats.maxSpecial);
     }
 }

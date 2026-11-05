@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "Dungeon/Actor/Enemy")]
@@ -12,6 +13,7 @@ public class EnemyData : ActorData
     }
 }
 
+[Serializable]
 public class Enemy : Actor
 {
     private int moneyDrop;
@@ -22,7 +24,7 @@ public class Enemy : Actor
     public Enemy(EnemyData data)
     {
         name = data.name;
-        baseStats = data.baseStats;
+        baseStats = data.baseStats.Clone();
         moneyDrop = data.moneyDropAmount;
         xpDrop = data.xpDropAmount;
     }

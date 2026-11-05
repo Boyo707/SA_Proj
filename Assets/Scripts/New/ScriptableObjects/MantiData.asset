@@ -17,10 +17,12 @@ MonoBehaviour:
     maxHealth: 10
     currentHP: 10
     damage: 3
-    maxSpecial: 8
-    currentSpecial: 8
+  defaultBattleAnimation: {fileID: 0}
+  characterStats:
+    maxSpecial: 15
+    currentSpecial: 15
     experiencePoints: 0
-    level: 1
+    level: 0
   levelCurve:
     serializedVersion: 2
     m_Curve:
@@ -47,4 +49,3 @@ MonoBehaviour:
     m_RotationOrder: 4
   normalAttack: {fileID: 0}
   duoAttack: {fileID: 0}
-  defaultAnimation: {fileID: 0}

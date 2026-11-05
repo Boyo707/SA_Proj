@@ -83,7 +83,7 @@ public class PlayerActor : OldBattleObserver
 
     protected override void GetEnemyDeath(CharacterOld pCharData, int damage)
     {
-        if(TryGetComponent<ActorAttack>(out ActorAttack attack))
+        if(TryGetComponent<OldActorAttack>(out OldActorAttack attack))
         {
             attack.StopAttack();
         }
@@ -93,7 +93,7 @@ public class PlayerActor : OldBattleObserver
     {
         //actionWheel.ResetPosition();
         animator.runtimeAnimatorController = animations[1];
-        gameObject.AddComponent<ActorAttack>().InitializeAttack(sparkObject, characterData, animator);
+        gameObject.AddComponent<OldActorAttack>().InitializeAttack(sparkObject, characterData, animator);
     }
 
     protected override void GetPlayerHeal(CharacterOld pCharacter, int heal)

@@ -40,7 +40,7 @@ public class EnemyActor :  OldBattleObserver
         int playerTargetIndex = Random.Range(0, players.Count);
         bool secondaryAttack = Random.Range(0, 2) == 0;
 
-        gameObject.AddComponent<ActorAttack>().
+        gameObject.AddComponent<OldActorAttack>().
             InitializeAttack(sparkObject, gameObject, players[playerTargetIndex].transform, secondaryAttack);
     }
 
@@ -63,7 +63,7 @@ public class EnemyActor :  OldBattleObserver
     }
     protected override void GetEnemyDeath(CharacterOld pCharData, int damage)
     {
-        if (TryGetComponent<ActorAttack>(out ActorAttack attack))
+        if (TryGetComponent<OldActorAttack>(out OldActorAttack attack))
         {
             attack.StopAttack();
         }
