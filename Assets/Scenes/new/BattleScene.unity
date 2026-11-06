@@ -1860,13 +1860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34ffa5183b3bf6409a3e8e7aca149fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActorIdentity
-  actor:
-    name: 
-    baseStats:
-      maxHealth: 0
-      currentHP: 0
-      damage: 0
-    transform: {fileID: 0}
 --- !u!114 &841375867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,15 +1872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a419ddeada83cc4392840b8402e519a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActorHealth
-  statsPresenter: {fileID: 1284393323}
-  actor:
-    name: 
-    baseStats:
-      maxHealth: 0
-      currentHP: 0
-      damage: 0
-    transform: {fileID: 0}
-  health: 0
+  statsPresenter: {fileID: 0}
 --- !u!1 &856816871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,13 +2108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34ffa5183b3bf6409a3e8e7aca149fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  actor:
-    name: 
-    baseStats:
-      maxHealth: 0
-      currentHP: 0
-      damage: 0
-    transform: {fileID: 0}
 --- !u!114 &883973882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,14 +2121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActorHeath
   statsPresenter: {fileID: 1284393323}
-  actor:
-    name: 
-    baseStats:
-      maxHealth: 0
-      currentHP: 0
-      damage: 0
-    transform: {fileID: 0}
-  health: 0
 --- !u!1 &887162844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +3571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1487321605}
   - component: {fileID: 1487321607}
+  - component: {fileID: 1487321608}
   m_Layer: 5
   m_Name: FemaleInfo
   m_TagString: Untagged
@@ -3638,6 +3609,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487321604}
   m_CullTransparentMesh: 1
+--- !u!114 &1487321608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487321604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4350b04f218fcff40b5c8e70a920ce19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleStatsPresenter
+  statText: {fileID: 1483502014}
 --- !u!1 &1489108268
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,6 +4217,7 @@ GameObject:
   - component: {fileID: 1701405826}
   - component: {fileID: 1701405824}
   - component: {fileID: 1701405823}
+  - component: {fileID: 1701405827}
   m_Layer: 0
   m_Name: BattleFemaleSprites_0
   m_TagString: Untagged
@@ -4372,13 +4357,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34ffa5183b3bf6409a3e8e7aca149fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActorIdentity
-  actor:
-    name: 
-    baseStats:
-      maxHealth: 0
-      currentHP: 0
-      damage: 0
-    transform: {fileID: 0}
+--- !u!114 &1701405827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701405819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a419ddeada83cc4392840b8402e519a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ActorHealth
+  statsPresenter: {fileID: 1487321608}
 --- !u!1 &1791735378
 GameObject:
   m_ObjectHideFlags: 0
