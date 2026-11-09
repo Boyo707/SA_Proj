@@ -15,7 +15,8 @@ MonoBehaviour:
   characterName: MrSully
   baseStats:
     maxHealth: 10
-    currentHP: 10
+    currentHP: 1
     damage: 1
+  defaultBattleAnimation: {fileID: 0}
   moneyDropAmount: 10
   xpDropAmount: 6

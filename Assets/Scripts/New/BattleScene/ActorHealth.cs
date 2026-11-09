@@ -33,6 +33,11 @@ public class ActorHealth : MonoBehaviour
             Debug.Log("Hello im the enemy taking damage");
 
             actorData.baseStats.currentHP = Mathf.Clamp(actorData.baseStats.currentHP - damageAmount, 0, actorData.baseStats.maxHealth);
+
+            if (actorData.baseStats.currentHP == 0)
+            {
+                BattleManager.Instance.ActorDied(actor);
+            }
             statsPresenter?.UpdateStats(actorData);
         }
     }

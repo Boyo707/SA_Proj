@@ -131,10 +131,10 @@ public class ActorAttack : MonoBehaviour
         //Input Check
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Check Click");
+            //Debug.Log("Check Click");
             if (currentAttack.HasAttack(previousClip))
             {
-                Debug.Log("Is clip");
+                //Debug.Log("Is clip");
                 float currentClipTime = Mathf.Lerp(0, currentClip.length, animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
 
                 float hitTime = currentClip.length - currentClipTime;
@@ -159,14 +159,14 @@ public class ActorAttack : MonoBehaviour
         {
             if (hasAttacked == false)
             {
-                Debug.Log(currentClip.name);
-                Debug.Log(previousClip.name);
-                Debug.Log("Failed");
+                //Debug.Log(currentClip.name);
+                //Debug.Log(previousClip.name);
+                //Debug.Log("Failed");
                 animator.SetTrigger("Fail");
             }
             else
             {
-                Debug.Log("ClickFail");
+                //Debug.Log("ClickFail");
                 hasAttacked = false;
             }
         }

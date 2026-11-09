@@ -960,7 +960,7 @@ MonoBehaviour:
   companionPosition: {x: 0, y: 0, z: 0}
   maleCharacter: {fileID: 11400000, guid: 2ee4b18352a13e3418b43c41086afa7a, type: 2}
   femaleCharacter: {fileID: 11400000, guid: 9f6a4d6e6f1ca914693ab0df141263b7, type: 2}
-  battleEnemyblep: {fileID: 11400000, guid: 513048357c21ca147879fadd3481d084, type: 2}
+  battleEnemyblep: {fileID: 11400000, guid: d4624946569054446b15ea8e3dffeae8, type: 2}
   maleData:
     name: 
     baseStats:
@@ -1823,7 +1823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0b4cd4cdb3c4d41af9356c95cbfe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  currentCharacter: {fileID: 11400000, guid: 513048357c21ca147879fadd3481d084, type: 2}
+  currentCharacter: {fileID: 11400000, guid: d4624946569054446b15ea8e3dffeae8, type: 2}
   attack: {fileID: 841375861}
   animator: {fileID: 841375864}
 --- !u!95 &841375864
@@ -3363,6 +3363,7 @@ MonoBehaviour:
   maleObj: {fileID: 883973873}
   femaleObj: {fileID: 1701405819}
   enemyObj: {fileID: 841375859}
+  turnOrder: []
 --- !u!4 &1461898926
 Transform:
   m_ObjectHideFlags: 0

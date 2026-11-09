@@ -11,7 +11,8 @@ public class BattleObserver : MonoBehaviour
     public static Action<Actor, Attack, Actor> onAttack;
     public static Action onAttackFail;
 
-    public static Action<Actor, int> onHit; //needs to get receiver info.
+    public static Action<Actor, int> onHit; 
+    public static Action<Actor> onDeath; 
     public static Action<Actor, int> onHeal;
 
     public static Action onWin;
